@@ -5,7 +5,7 @@ const LoginPage = () => {
 	return (
 		<Layout>
 			<div className="wrapper">
-				<h1 className={"a-center"}>Login.</h1>
+				<h1 className={"a-center"}>Qencode</h1>
 			</div>
 		</Layout>
 	);
