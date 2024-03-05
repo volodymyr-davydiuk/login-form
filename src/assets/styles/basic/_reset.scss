@@ -1,0 +1,67 @@
+@import 'colors';
+@import 'fonts';
+
+html, body, *, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $fontFamilyDefault;
+  background: $bgColor;
+  color: $secondaryTextColor;
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+ol, ul {
+  list-style-position: inside;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $white;
+}
+::placeholder {
+  color: $white;
+  opacity: 0.4;
+}
+
+:-ms-input-placeholder {
+  color: $white;
+  opacity: 0.4;
+}
+::-ms-input-placeholder {
+  color: $white;
+  opacity: 0.4;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  body {
+    scroll-behavior: auto;
+  }
+}
