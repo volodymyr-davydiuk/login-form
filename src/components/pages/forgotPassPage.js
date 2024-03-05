@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '../../shared/Layout';
 
-const LoginPage = () => {
+const ForgotPassPage = () => {
 	return (
 		<Layout>
-			<h1>Login.</h1>
+			<h1>Forgot pass.</h1>
 		</Layout>
 	);
 };
 
-export default LoginPage;
+export default ForgotPassPage;
