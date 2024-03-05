@@ -1,0 +1,50 @@
+@import 'fonts';
+@import 'colors';
+@import '_breakpoints.scss';
+
+h1, h2, .h2, h3, .h3, h4, h5, .h5, h6 {
+  color: $secondaryTextColor;
+  font-weight: $fontBoldWeight;
+  margin: 22px 0;
+  font-size: 30px;
+  em, i, strong, b {
+    font-weight: inherit;
+  }
+}
+h1, .h1 {
+  color: $primaryTextColor;
+  font-size: 36px;
+  margin: 36px 0;
+}
+
+h2, .h2 {
+  font-size: 30px;
+}
+
+h4, h5, .h5, h6 {
+  font-size: 18px;
+  margin: 1.5rem 0 1rem;
+  + * {
+    margin-top: 0.5rem;
+  }
+}
+
+
+@media (max-width: $bpSmallDesktop) {
+  h1, .h1 {
+    margin: 20px 0 25px;
+    font-size: 32px;
+  }
+  h2, .h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: $bpTablet) {
+  h1, .h1 {
+    font-size: 24px;
+  }
+  h2, .h2 {
+    font-size: 20px;
+  }
+}

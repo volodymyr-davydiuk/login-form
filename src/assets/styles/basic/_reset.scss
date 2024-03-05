@@ -60,6 +60,15 @@ input:focus::placeholder {
   color: transparent;
 }
 
+a {
+  color: $secondaryTextColor;
+  text-decoration: none;
+  &:hover {
+    color: $primaryTextColor;
+    text-decoration: underline;
+  }
+}
+
 @media screen and (prefers-reduced-motion: reduce) {
   body {
     scroll-behavior: auto;

@@ -4,7 +4,9 @@ import Layout from '../../shared/Layout';
 const ForgotPassPage = () => {
 	return (
 		<Layout>
-			<h1>Forgot pass.</h1>
+			<div className="wrapper">
+				<h1 className={"a-center"}>Forgot pass.</h1>
+			</div>
 		</Layout>
 	);
 };

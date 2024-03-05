@@ -4,7 +4,9 @@ import Layout from '../../shared/Layout';
 const Home = () => {
 	return (
 		<Layout>
-			<h1>Home page!</h1>
+			<div className="wrapper">
+				<h1 className={ "a-center" }>Home page!</h1>
+			</div>
 		</Layout>
 	);
 };

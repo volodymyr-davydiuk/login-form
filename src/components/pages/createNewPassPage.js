@@ -4,7 +4,9 @@ import Layout from '../../shared/Layout';
 const CreateNewPassPage = () => {
 	return (
 		<Layout>
-			<h1>Create new pass.</h1>
+			<div className="wrapper">
+				<h1 className={"a-center"}>Create new pass.</h1>
+			</div>
 		</Layout>
 	);
 };

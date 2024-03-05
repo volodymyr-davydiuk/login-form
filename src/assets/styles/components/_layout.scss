@@ -1,0 +1,43 @@
+//reusable chunks
+%wrapper {
+  width: 1254px;
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+%flex-horizontal {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.app-header {
+  padding: 20px 0;
+  .menu-list {
+    list-style: none;
+    display: flex;
+  }
+  .menu-item {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+//common classes
+.wrapper {
+  @extend %wrapper;
+}
+.inline-flex-link {
+  display: inline-flex;
+}
+.mobile-only {
+  display: none;
+}
+
+.a-center {
+  text-align: center;
+}
