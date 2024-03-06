@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { GitHubIcon, GoogleIcon, VisibleTextIcon } from '../../../shared/icons/icons';
+// import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+// import GithubButton from 'react-github-login-button';
 
 
 const LoginForm = () => {
-	// const { setUsername } = useContext(StoreContext);
 	const {register, handleSubmit, formState: {errors, }} = useForm({mode: "onChange"});
 	const [errorMsg, setErrorMsg] = useState('');
+	const [isVisiblePass, setIsVisiblePass] = useState(false);
 
-	// const clientId = "997708932407-uki24e80m32vv3a0r9jkb95ia42nv2ro.apps.googleusercontent.com";
+	// const clientId = "1004314386829-loftuelqhht1mvie5n7jnbd49um9f09k.apps.googleusercontent.com";
 
 	const hideServerError = () => {
 		setErrorMsg('');
@@ -27,7 +29,8 @@ const LoginForm = () => {
 		});
 		if (response.ok) {
 			let json = await response.json();
-			console.log(json)
+			console.log("Response ok:" + json)
+			//there will be auth function
 		} else {
 			let json = await response.json();
 			setErrorMsg( 'Sorry, the username and/or password is incorrect.');
@@ -43,18 +46,31 @@ const LoginForm = () => {
 			<div className="signInDiv"></div>
 
 			<form onSubmit={ handleSubmit( onSubmit ) }>
-				{/*<GoogleOAuthProvider clientId={"997708932407-uki24e80m32vv3a0r9jkb95ia42nv2ro.apps.googleusercontent.com"}>*/}
-				{/*	<GoogleLogin*/}
-				{/*		login_uri={"https://auth-qa.qencode.com/v1/auth-api-references#tag/auth/operation/access_token_v1_auth_access_token_post"}*/}
-				{/*		onSuccess={credentialResponse => {*/}
-				{/*			console.log(credentialResponse);*/}
-				{/*		}}*/}
-				{/*		onError={() => {*/}
-				{/*			console.log('Login Failed');*/}
-				{/*		}}*/}
-				{/*		useOneTap*/}
-				{/*	/>*/}
-				{/*</GoogleOAuthProvider>*/}
+				<div className="social-login-group">
+					<div className={"social-button-wrap"}>
+						<button
+							className={"social-button google-button"}
+							onClick={() => console.log( "Google login" )} //Need to change
+						>
+							<GoogleIcon/>
+							Google
+						</button>
+					</div>
+					<div className={"social-button-wrap"}>
+						<button
+							className={"social-button git-button"}
+							onClick={() => console.log( "Github login" )} //Need to change
+						>
+							<GitHubIcon/>
+							Github
+						</button>
+					</div>
+				</div>
+
+				<div className="divider">
+					<span>OR</span>
+				</div>
+
 				{ errorMsg && <p className="error-msg">{ errorMsg }</p> }
 				<div className="field-wrap icon-field">
 					{ errors.email &&
@@ -79,33 +95,45 @@ const LoginForm = () => {
 								 } ) }/>
 				</div>
 
-				<div className="field-wrap icon-field">
+				<div className="field-wrap icon-field pass-field-wrap">
 					{ errors.password &&
 						<p className="error">
 							{ errors.password?.message }
 						</p>
 					}
-					<input type="password" placeholder="Password" id="password" onClick={ hideServerError }
-								 { ...register( "password", {
-									 required: {
-										 value: true,
-										 message: "This field is required!"
-									 },
-								 } ) }/>
+					<input
+						type={isVisiblePass ? "text" : "password"}
+						placeholder="Password"
+						id="password"
+						onClick={ hideServerError }
+						 { ...register( "password", {
+							 required: {
+								 value: true,
+								 message: "This field is required!"
+							 },
+						 } ) }
+					/>
+					<div onClick={() => setIsVisiblePass(!isVisiblePass)}>
+						<VisibleTextIcon />
+					</div>
 				</div>
-				<div>
+				<div className={"forgot-pass a-right"}>
 					<Link to={"/forgot-pass/"}>Forgot your password?</Link>
 				</div>
 				<div className="form-buttons">
 					<button
+						className={"login-button"}
 						aria-label="Log in"
 						// disabled={ !isValid }
 						type="submit"
 					>
 						Log in to your account
 					</button>
-					<div>
-						<span>Is your company new to Qencode? <Link to={ "/login/" }>Sign up</Link></span>
+					<div className={"register-block a-center"}>
+						<span>
+							Is your company new to Qencode? {' '}
+							<Link className={"register-link"} to={ "/register/" }>Sign up</Link>
+						</span>
 					</div>
 				</div>
 			</form>

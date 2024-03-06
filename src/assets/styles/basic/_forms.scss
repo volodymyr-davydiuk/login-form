@@ -69,7 +69,7 @@
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #dddddd inset !important;
+    -webkit-box-shadow: 0 0 0 30px $inputBgAutofocus inset !important;
     -webkit-text-fill-color: $inputValue !important;
   }
   select {
@@ -116,7 +116,7 @@
     right: 16px;
     top: 14px;
     opacity: 0.6;
-    pointer-events: none;
+    cursor: pointer;
   }
   .icon-span {
     top: 10px;
@@ -153,81 +153,6 @@ label {
   &.small-label {
     font-size: 12px;
     padding: 0 20px 5px;
-  }
-}
-
-.minimal-custom-radio {
-  .radio-wrap {
-    margin-bottom: 10px;
-  }
-  [type='radio']:checked,
-  [type='radio']:not(:checked) {
-    position: absolute;
-    left: -9999px;
-  }
-  [type='radio']:checked + label,
-  [type='radio']:not(:checked) + label {
-    position: relative;
-    padding-left: 28px;
-    cursor: pointer;
-    line-height: 20px;
-    display: inline-block;
-    color: #666;
-  }
-  [type='radio']:checked + label:before,
-  [type='radio']:not(:checked) + label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 18px;
-    height: 18px;
-    border: 1px solid $secondaryTextColor;
-    border-radius: 100%;
-    background: $inputBg;
-  }
-  [type='radio']:checked + label:after,
-  [type='radio']:not(:checked) + label:after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: $primaryTextColor;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    border-radius: 100%;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-  }
-
-  [type='radio']:checked + .white-label,
-  [type='radio']:not(:checked) + .white-label {
-    color: $white;
-    font-size: 1rem;
-  }
-  [type='radio']:not(:checked) + .white-label:before {
-    border-color: $white;
-  }
-  [type='radio']:checked + .white-label:before {
-    border-color: $primaryTextColor;
-  }
-  [type='radio']:checked + .white-label:after,
-  [type='radio']:not(:checked) + .white-label:after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    background: $primaryTextColor;
-    top: 4px;
-    left: 4px;
-  }
-
-  [type='radio']:not(:checked) + label:after {
-    opacity: 0;
-    transform: scale(0);
-  }
-  [type='radio']:checked + label:after {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 

@@ -31,13 +31,23 @@
 .wrapper {
   @extend %wrapper;
 }
+
 .inline-flex-link {
   display: inline-flex;
 }
+
 .mobile-only {
   display: none;
 }
 
 .a-center {
   text-align: center;
+}
+
+.a-left {
+  text-align: left;
+}
+
+.a-right {
+  text-align: right;
 }

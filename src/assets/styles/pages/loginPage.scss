@@ -1,0 +1,90 @@
+@import "../basic/colors";
+@import "../basic/breakpoints";
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  .social-login-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    .social-button-wrap {
+      width: 48%;
+    }
+    .social-button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      padding: 10px 5px;
+      background: $white;
+      border: 1px solid $borderColor;
+      border-radius: 6px;
+      cursor: pointer;
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+  .divider {
+    text-align: center;
+    color: $dividerColor;
+    margin-bottom: 30px;
+    position: relative;
+    span {
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 45%;
+        height: 1px;
+        background: $dividerColor;
+        position: absolute;
+        left: 0;
+        top: 49%;
+      }
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 45%;
+        height: 1px;
+        background: $dividerColor;
+        position: absolute;
+        right: 0;
+        top: 49%;
+      }
+    }
+  }
+  .forgot-pass {
+    padding: 10px 0 30px;
+    a {
+      color: $primaryTextColor;
+    }
+  }
+  .pass-field-wrap {
+    padding-bottom: 0;
+  }
+  .login-button {
+    width: 100%;
+    background: $primaryButtonColor;
+    color: $primaryButtonTextColor;
+    border: none;
+    padding: 13px 15px 13px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    &:hover {
+      background: darken($primaryButtonColor, 10%);
+    }
+  }
+  .register-block {
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    .register-link {
+      color: $primaryTextColor;
+    }
+  }
+}
