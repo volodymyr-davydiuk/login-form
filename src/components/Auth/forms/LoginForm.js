@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GitHubIcon, GoogleIcon, VisibleTextIcon } from '../../../shared/icons/icons';
-// import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
-// import GithubButton from 'react-github-login-button';
+import { useGoogleLogin } from '@react-oauth/google';
 
 
 const LoginForm = () => {
@@ -11,7 +10,23 @@ const LoginForm = () => {
 	const [errorMsg, setErrorMsg] = useState('');
 	const [isVisiblePass, setIsVisiblePass] = useState(false);
 
-	// const clientId = "1004314386829-loftuelqhht1mvie5n7jnbd49um9f09k.apps.googleusercontent.com";
+	// const clientId = "1004314386829-loftuelqhht1mvie5n7jnbd49um9f09k.apps.googleusercontent.com"; //Google client id
+	const gitHubClientId = "90a067f6669b00321c18";
+
+	const navigate = useNavigate()
+
+	const loginToGithub = () => {
+		localStorage.setItem("loginWith", "GitHub")
+		window.location.assign(`https://github.com/login/oauth/authorize?client_id=${gitHubClientId}`)
+	}
+
+	const loginToGoogle = useGoogleLogin({
+		onSuccess: tokenResponse => {
+			localStorage.setItem("loginWith", "Google")
+			localStorage.setItem("accessToken", tokenResponse.access_token)
+			navigate("/")
+		},
+	})
 
 	const hideServerError = () => {
 		setErrorMsg('');
@@ -47,19 +62,19 @@ const LoginForm = () => {
 
 			<form onSubmit={ handleSubmit( onSubmit ) }>
 				<div className="social-login-group">
-					<div className={"social-button-wrap"}>
+					<div className={ "social-button-wrap" }>
 						<button
-							className={"social-button google-button"}
-							onClick={() => console.log( "Google login" )} //Need to change
+							className={ "social-button google-button" }
+							onClick={() => loginToGoogle()}
 						>
 							<GoogleIcon/>
 							Google
 						</button>
 					</div>
-					<div className={"social-button-wrap"}>
+					<div className={ "social-button-wrap" }>
 						<button
-							className={"social-button git-button"}
-							onClick={() => console.log( "Github login" )} //Need to change
+							className={ "social-button git-button" }
+							onClick={() => loginToGithub()}
 						>
 							<GitHubIcon/>
 							Github
