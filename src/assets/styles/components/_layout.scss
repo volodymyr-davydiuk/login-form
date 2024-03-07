@@ -1,3 +1,6 @@
+@import "../basic/colors";
+@import "../basic/breakpoints";
+
 //reusable chunks
 %wrapper {
   width: 1254px;
@@ -25,6 +28,31 @@
       margin-right: 0;
     }
   }
+  .mobile-menu {
+    display: none;
+    background: $white;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 3;
+    .menu-list {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .menu-item {
+      margin: 0 0 10px 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
 }
 
 //common classes
@@ -50,4 +78,30 @@
 
 .a-right {
   text-align: right;
+}
+
+.menu-icon-wrap {
+  width: fit-content;
+  padding: 5px 20px;
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+
+@media (max-width: $bpMobile) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-menu {
+    display: none;
+  }
+  .app-header {
+    .mobile-menu{
+      &.menu-opened {
+        display: block;
+      }
+    }
+  }
 }

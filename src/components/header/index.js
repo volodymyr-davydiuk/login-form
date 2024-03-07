@@ -1,43 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import DesktopMenu from '../menus/desktopMenu';
+import { CloseMenuIcon, MenuIcon } from '../../shared/icons/icons';
+import MobileMenu from '../menus/mobileMenu';
 
 const Header = () => {
-	const menuList = [
-		{
-			name: "Home",
-			link: "/"
-		},
-		{
-			name: "Login",
-			link: "/login/"
-		},
-		{
-			name: "Forgot password",
-			link: "/forgot-pass/"
-		},
-		{
-			name: "Create new password",
-			link: "/create-new-pass/"
-		}
-	];
+	const [isOpenMenu, setIsOpenMenu] = useState(false);
 
 	return (
 		<header className={"app-header"}>
-			<nav>
-				<ul className={"menu-list"}>
-					{
-						menuList.map((menuItem, index) => {
-							return (
-								<li key={`menu-item-${index}`} className={ "menu-item" }>
-									<Link to={ menuItem.link }>
-										{menuItem.name}
-									</Link>
-								</li>
-							)
-						} )
-					}
-				</ul>
-			</nav>
+			<div className="desktop-menu">
+				<DesktopMenu/>
+			</div>
+			<button
+				className="menu-icon-wrap mobile-only"
+				aria-label={"Menu icon"}
+				onClick={() => setIsOpenMenu(!isOpenMenu)}
+			>
+				{
+					isOpenMenu ? <CloseMenuIcon/> : <MenuIcon/>
+				}
+			</button>
+			<div className={`mobile-menu ${isOpenMenu ? "menu-opened" : ''}`}>
+				<MobileMenu/>
+			</div>
 		</header>
 	);
 };
