@@ -63,6 +63,7 @@ input:focus::placeholder {
 a {
   color: $secondaryTextColor;
   text-decoration: none;
+  transition: all 0.2s;
   &:hover {
     color: $primaryTextColor;
     text-decoration: underline;

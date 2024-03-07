@@ -1,0 +1,41 @@
+@import "../basic/colors";
+@import "../basic/breakpoints";
+
+.forgot-pass-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  .send-button {
+    width: 100%;
+    background: $primaryButtonColor;
+    color: $primaryButtonTextColor;
+    border: none;
+    padding: 13px 15px 13px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+    &:hover {
+      background: darken($primaryButtonColor, 10%);
+    }
+  }
+  .cancel-button {
+    width: 100%;
+    background: $white;
+    color: $secondaryTextColor;
+    border: 1px solid $borderColor;
+    padding: 13px 15px 13px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.2s;
+    &:hover {
+      background: $primaryButtonColor;
+      color: $white;
+    }
+  }
+}

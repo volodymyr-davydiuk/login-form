@@ -58,7 +58,7 @@ const LoginForm = () => {
 	return (
 		<div className={ "login-form" }>
 
-			<div className="signInDiv"></div>
+			<div className="signInDiv"/>
 
 			<form onSubmit={ handleSubmit( onSubmit ) }>
 				<div className="social-login-group">
