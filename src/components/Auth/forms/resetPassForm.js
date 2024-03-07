@@ -29,7 +29,7 @@ const ResetPassForm = () => {
 		if (response.ok) {
 			let json = await response.json();
 			console.log("Response ok:" + json)
-			//there will be auth function
+			//there will be function and redirect to home page
 		} else {
 			let json = await response.json();
 			if ( json.detail === "Link expired" ) {
@@ -38,7 +38,6 @@ const ResetPassForm = () => {
 			else {
 				setErrorMsg("Server error, try again.");
 			}
-			console.log( json );
 			console.log(
 				'Login HTTP Error: ' + response.status + '. Error: ' + json.detail
 			);
