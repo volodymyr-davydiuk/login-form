@@ -8,8 +8,8 @@ const ResetPassForm = () => {
 	const [errorMsg, setErrorMsg] = useState('');
 	const [isVisiblePass, setIsVisiblePass] = useState(false);
 	const [isVisibleConfirmPass, setIsVisibleConfirmPass] = useState(false);
-	const [token, setToken] = useState('');
-	const [secret, setSecret] = useState('');
+	const token = localStorage.getItem("Auth-Token") ?? "";
+	const secret = localStorage.getItem("secret") ?? "";
 
 
 	const hideServerError = () => {

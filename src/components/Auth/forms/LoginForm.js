@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { GitHubIcon, GoogleIcon, VisibleTextIcon } from '../../../shared/icons/icons';
 import { useGoogleLogin } from '@react-oauth/google';
+import { setAuthToken } from "../../Utils";
 
 
 const LoginForm = () => {
@@ -13,18 +14,18 @@ const LoginForm = () => {
 	// const clientId = "1004314386829-loftuelqhht1mvie5n7jnbd49um9f09k.apps.googleusercontent.com"; //Google client id
 	const gitHubClientId = "90a067f6669b00321c18";
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const loginToGithub = () => {
-		localStorage.setItem("loginWith", "GitHub")
-		window.location.assign(`https://github.com/login/oauth/authorize?client_id=${gitHubClientId}`)
+		localStorage.setItem("loginWith", "GitHub");
+		window.location.assign(`https://github.com/login/oauth/authorize?client_id=${gitHubClientId}`);
 	}
 
 	const loginToGoogle = useGoogleLogin({
 		onSuccess: tokenResponse => {
-			localStorage.setItem("loginWith", "Google")
-			localStorage.setItem("accessToken", tokenResponse.access_token)
-			navigate("/")
+			localStorage.setItem("loginWith", "Google");
+			localStorage.setItem("accessToken", tokenResponse.access_token);
+			navigate("/");
 		},
 	})
 
@@ -44,8 +45,13 @@ const LoginForm = () => {
 		});
 		if (response.ok) {
 			let json = await response.json();
-			console.log("Response ok:" + json)
-			//there will be auth function
+			let token = json.access_token;
+			if (token) {
+				setAuthToken(token);
+				navigate("/");
+			} else {
+				setErrorMsg('Unknown error, try again');
+			}
 		} else {
 			let json = await response.json();
 			setErrorMsg( 'Sorry, the username and/or password is incorrect.');

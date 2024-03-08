@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../shared/Layout';
-import ResetPassForm from '../Auth/forms/resetPassForm';
+import ResetPassForm from '../Auth/forms/ResetPassForm';
 
 const CreateNewPassPage = () => {
 	return (

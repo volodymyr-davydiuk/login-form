@@ -11,7 +11,7 @@ const ForgotPassForm = () => {
 	//this must go to API calls somehow
 	const onSubmit = async (values) => {
 		const body = JSON.stringify(values);
-		const response = await fetch("https://auth-qa.qencode.com/v1/auth/password-sreset", {
+		const response = await fetch("https://auth-qa.qencode.com/v1/auth/password-reset", {
 			"method": "POST",
 			"body": body,
 			"headers": {
@@ -22,6 +22,7 @@ const ForgotPassForm = () => {
 			let json = await response.json();
 			console.log("Response ok:" + json)
 			//there will be reset password function.
+			navigate("/create-new-pass/");
 		} else {
 			let json = await response.json();
 			setErrorMsg( 'Sorry, the username not found.');
